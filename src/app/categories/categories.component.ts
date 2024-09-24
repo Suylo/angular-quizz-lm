@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {CategoriesService} from "./categories.service";
+import {Category} from "../../_interfaces/Category";
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit{
+  categories: Category[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private categoriesService: CategoriesService) {
   }
 
   ngOnInit(): void {
-
+    this.categoriesService.getCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
   }
 }
