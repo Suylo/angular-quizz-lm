@@ -20,12 +20,12 @@
   "questions": [
     {
       "id": 1,
-      "questionLabel": "What is a component in Angular?",
+      "questionLabel": "Basic What is a component in Angular?",
       "categoryId": 1
     },
     {
       "id": 2,
-      "questionLabel": "Explain the purpose of the NgModule in Angular.",
+      "questionLabel": "Architecture Explain the purpose of the NgModule in Angular.",
       "categoryId": 2
     },
     {
