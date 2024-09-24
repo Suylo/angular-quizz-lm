@@ -1,6 +1,8 @@
 # AngularQuiz
+Evaluation projet Angular Quizz, réalisé par : 
+- Louis LUBINEAU
+- Mattéo VECCHIONNE
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.7.
 
 ## Development server
 
