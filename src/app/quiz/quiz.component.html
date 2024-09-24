@@ -1,7 +1,7 @@
 <section>
   <h2 class="quiz_title">C'est parti {{ playerName }}, soit prêt !</h2>
   <div class="quiz_category">
-    <h3>{{ quizCategory | async }}</h3>
+    <h3>{{ quizCategory().categoryLabel }}</h3>
   </div>
   <section class="quiz_reset" *ngIf="isQuizFinished">
     <h3>You can see your answers</h3>

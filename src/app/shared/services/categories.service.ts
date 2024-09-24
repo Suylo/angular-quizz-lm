@@ -1,23 +1,21 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Category} from "../../../_interfaces/Category";
-
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Category } from '../../../_interfaces/Category';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoriesService {
-  categories: Category[] = [];
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-  }
-
-  getCategories(): Observable<Category[]>{
+  getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>('http://localhost:3000/categories');
   }
 
-  getCategoryById(categoryId: number): Observable<Category> {
-    return this.http.get<Category>('http://localhost:3000/categories?id=' + categoryId);
+  getCategoryById(categoryId: number): Observable<Category[]> {
+    return this.http.get<Category[]>(
+      'http://localhost:3000/categories?id=' + categoryId
+    );
   }
 }
