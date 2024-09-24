@@ -9,7 +9,8 @@ import { QuizService } from "../shared/services/quiz.service";
 })
 export class QuizComponent implements OnInit {
   isQuizFinished = this.quizService.isQuizFinished;
-  playerName = '';
+  playerName = localStorage.getItem('playerName');
+  categoryId = 0;
 
   constructor(
     private quizService: QuizService,
@@ -19,8 +20,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.quizService.playerName = params['playerName'];
-      this.playerName = params['playerName'];
+      this.categoryId = +params['categoryId'];
     });
   }
 
