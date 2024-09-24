@@ -22,7 +22,7 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: CategoriesComponent
+        component: QuizComponent
       },
     ]
   },
