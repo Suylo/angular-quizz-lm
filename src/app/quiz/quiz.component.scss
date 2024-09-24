@@ -1,6 +1,7 @@
 .quiz {
   &_title {
     @apply text-2xl font-bold text-center mb-4;
+    font-family: 'Poppins', sans-serif;
   }
 
   &_reset {
@@ -17,5 +18,17 @@
 
   &_validation {
     @apply flex justify-center;
+  }
+
+  &_category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+
+    span{
+      font-weight: 700;
+    }
   }
 }
