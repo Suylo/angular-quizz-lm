@@ -10,6 +10,7 @@ import {CategoriesService} from "../shared/services/categories.service";
 })
 export class CategoriesComponent implements OnInit{
   categories: Category[] = [];
+  searchCategory = '';
 
   constructor(private router: Router, private categoriesService: CategoriesService) {
   }
@@ -18,5 +19,25 @@ export class CategoriesComponent implements OnInit{
     this.categoriesService.getCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
     });
+  }
+
+
+  onSearchSubmit(){
+    if (this.searchCategory != '') {
+      this.categories = this.categories.filter((category: Category) => {
+        const lowerCaseLabel = category.categoryLabel.toLowerCase();
+        const lowerCaseSearch = this.searchCategory.toLowerCase();
+        return lowerCaseLabel.includes(lowerCaseSearch) || lowerCaseLabel.startsWith(lowerCaseSearch);
+      });
+    } else {
+      this.categoriesService.getCategories().subscribe((categories: Category[]) => {
+        this.categories = categories;
+      });
+    }
+  }
+
+  resetSearch() {
+    this.searchCategory = '';
+    this.onSearchSubmit();
   }
 }
