@@ -1,40 +1,52 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {Category} from "../../_interfaces/Category";
-import {CategoriesService} from "../shared/services/categories.service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Category } from '../../_interfaces/Category';
+import { CategoriesService } from '../shared/services/categories.service';
+import { QuizService } from '../shared/services/quiz.service';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+  styleUrls: ['./categories.component.scss'],
 })
-export class CategoriesComponent implements OnInit{
+export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
   searchCategory = '';
   playerName = '';
 
-  constructor(private router: Router, private categoriesService: CategoriesService) {
-  }
+  constructor(
+    private router: Router,
+    private categoriesService: CategoriesService,
+    private quizService: QuizService
+  ) {}
 
   ngOnInit(): void {
-    this.categoriesService.getCategories().subscribe((categories: Category[]) => {
-      this.categories = categories;
-    });
+    this.quizService.resetQuiz();
+
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+      });
     this.playerName = localStorage.getItem('playerName') || '';
   }
 
-
-  onSearchSubmit(){
+  onSearchSubmit() {
     if (this.searchCategory != '') {
       this.categories = this.categories.filter((category: Category) => {
         const lowerCaseLabel = category.categoryLabel.toLowerCase();
         const lowerCaseSearch = this.searchCategory.toLowerCase();
-        return lowerCaseLabel.includes(lowerCaseSearch) || lowerCaseLabel.startsWith(lowerCaseSearch);
+        return (
+          lowerCaseLabel.includes(lowerCaseSearch) ||
+          lowerCaseLabel.startsWith(lowerCaseSearch)
+        );
       });
     } else {
-      this.categoriesService.getCategories().subscribe((categories: Category[]) => {
-        this.categories = categories;
-      });
+      this.categoriesService
+        .getCategories()
+        .subscribe((categories: Category[]) => {
+          this.categories = categories;
+        });
     }
   }
 
