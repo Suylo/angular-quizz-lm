@@ -11,6 +11,7 @@ import {CategoriesService} from "../shared/services/categories.service";
 export class CategoriesComponent implements OnInit{
   categories: Category[] = [];
   searchCategory = '';
+  playerName = '';
 
   constructor(private router: Router, private categoriesService: CategoriesService) {
   }
@@ -19,6 +20,7 @@ export class CategoriesComponent implements OnInit{
     this.categoriesService.getCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
     });
+    this.playerName = localStorage.getItem('playerName') || '';
   }
 
 
