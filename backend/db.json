@@ -30,12 +30,12 @@
     },
     {
       "id": 3,
-      "questionLabel": "How do you create a new Angular application?",
+      "questionLabel": "CLI How do you create a new Angular application?",
       "categoryId": 3
     },
     {
       "id": 4,
-      "questionLabel": "What is data binding in Angular, and what are the different types of data binding?",
+      "questionLabel": "Data Binding What is data binding in Angular, and what are the different types of data binding?",
       "categoryId": 4
     },
     {
