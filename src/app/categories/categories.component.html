@@ -1,9 +1,7 @@
 <section id="categories">
   <ul>
     <li *ngFor="let category of categories">
-      <a [routerLink]="['/quiz', category.id]">
-        <h2>{{ category.categoryLabel }}</h2>
-      </a>
+      <app-category-card [category]="category"></app-category-card>
     </li>
   </ul>
 </section>
