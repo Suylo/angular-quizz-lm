@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { QuizService } from "../shared/services/quiz.service";
+import {CategoriesService} from "../shared/services/categories.service";
 
 @Component({
   selector: 'app-quiz',
@@ -11,17 +12,20 @@ export class QuizComponent implements OnInit {
   isQuizFinished = this.quizService.isQuizFinished;
   playerName = localStorage.getItem('playerName');
   categoryId = 0;
+  quizCategory: any = this.categoriesService.getCategoryById(this.categoryId);
 
   constructor(
     private quizService: QuizService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private categoriesService: CategoriesService
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.categoryId = +params['categoryId'];
+      this.categoryId = params['categoryId'];
     });
+
   }
 
   goToResultPage() {
